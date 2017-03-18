@@ -1,15 +1,47 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
+body {
+  margin: 0;
+
+}
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #222;
-  height: 40px;
-  padding: 20px;
-  color: white;
+  background-color: rgb(173,41,255);
+  height: 55px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .App-intro {
   font-size: large;
   padding: 10px
+}
+
+.Icons {
+  text-align: right;
+}
+
+.NavText {
+  text-align: left;
+}
+
+.Row {
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+
+.Column {
+    display: table-cell;
+}
+
+.Card {
+  /*background-color: rgb(173,41,255);*/
+  border-width: thick;
+  padding:10px
 }

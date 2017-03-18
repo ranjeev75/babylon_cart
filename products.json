@@ -1,0 +1,62 @@
+[
+  {
+    "id": "BYN001",
+    "name": "Samsung S7 Edge",
+    "price": 100
+  },
+  {
+    "id": "BYN002",
+    "name": "Googe Nexus 6",
+    "price": 200
+  },
+  {
+    "id": "BYN003",
+    "name": "Apple Iphone 7",
+    "price": 400
+  },
+  {
+    "id": "BYN004",
+    "name": "Nokia 3300",
+    "price": 59
+  },
+  {
+    "id": "BYN005",
+    "name": "Sony Experia",
+    "price": 999
+  },
+  {
+    "id": "BYN006",
+    "name": "LG G5",
+    "price": 276
+  },
+  {
+    "id": "BYN007",
+    "name": "Blackberry b9",
+    "price": 222
+  },
+  {
+    "id": "BYN008",
+    "name": "Apple charger",
+    "price": 30
+  },
+  {
+    "id": "BYN009",
+    "name": "Samsung wireless charger",
+    "price": 57
+  },
+  {
+    "id": "BYN010",
+    "name": "Occulus Rift",
+    "price": 656
+  },
+  {
+    "id": "BYN011",
+    "name": "Apple MacBook Pro",
+    "price": 2559
+  },
+  {
+    "id": "BYN012",
+    "name": "A4 Paper lined",
+    "price": 3
+  }
+]
