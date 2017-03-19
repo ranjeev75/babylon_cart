@@ -4,7 +4,7 @@ import '../styles/App.css'
 import BasketTable from '../common/basketTable'
 import { Table } from 'react-bootstrap'
 import { addItem, deleteItem } from '../actions'
-import withDiscount from '../utils'
+import {withDiscount, totalCost}  from '../utils'
 
 class Basket extends Component {
   //constructor(props) {
@@ -19,16 +19,13 @@ class Basket extends Component {
     this.props.deleteItem(id)
   }
 
-  totalCost() {
-    return this.props.basket.reduce((total, item) => total + item.price * item.counter : total, 0)
-  }
-
   componentDidMount() {
 
   }
 
   render() {
     const basketNew = this.props.basket.filter(item => item.counter > 0)
+    const cost = totalCost(this.props.basket)
     //console.log(this.props.basket)
     return (
       <div>
@@ -47,7 +44,7 @@ class Basket extends Component {
           null}
           <tbody>
           {basketNew.map((item, index) => {
-            return(
+            return (
               <BasketTable
                 key={item.id}
                 id={item.id}
@@ -58,19 +55,38 @@ class Basket extends Component {
                 deleteItem={() => this.deleteItem(item.id)}
                 total={item.counter * item.price} />
             )
-          } :
-          null)
-          }
-        {basketNew.length > 0?
+          } : null)
+        }
+        {basketNew.length > 0 ?
           <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td><strong>Sub Total</strong></td>
-            <td><strong>£{this.totalCost().toFixed(2)}</strong></td>
-            <td><strong>Discount</strong></td>
-            <td><strong>{withDiscount(this.totalCost()).discount}%</strong></td>
-            <td><strong>Total</strong></td>
-            <td><strong>£{(withDiscount(this.totalCost()).finalCost).toFixed(2)}</strong></td>
+            <td><strong>£{cost.toFixed(2)}</strong></td>
           </tr>
-        : <tr><td>YOUR SHOPPING BASKET IS EMPTY</td></tr>}
+        : null}
+        {basketNew.length > 0 ?
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>Discount</strong></td>
+            <td><strong>{withDiscount(cost).discount}%</strong></td>
+          </tr>
+        : null}
+        {basketNew.length > 0 ?
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>Total</strong></td>
+            <td><strong>£{(withDiscount(cost).finalCost).toFixed(2)}</strong></td>
+          </tr>
+        : <tr><td><strong>YOUR SHOPPING BASKET IS EMPTY</strong></td></tr>}
         </tbody></Table>
         </div>
     )
@@ -78,10 +94,10 @@ class Basket extends Component {
 }
 
 Basket.propTypes = {
-    basket: PropTypes.array.isRequired,
+  basket: PropTypes.array.isRequired,
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     basket: state.bag,
   }
@@ -90,7 +106,7 @@ function mapStateToProps(state){
 function actions(dispatch) {
   return {
     addItem: (item) => dispatch(addItem(item)),
-    deleteItem: (uid) => dispatch(deleteItem(uid)),
+    deleteItem: (id) => dispatch(deleteItem(id)),
   }
 }
 

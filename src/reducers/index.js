@@ -9,8 +9,8 @@ const initState = {
 function bag(state=initState.bag, action){
   switch (action.type) {
     case 'ADD_ITEM':
-      const x = state.findIndex((each) => each.id === action.item.id)
-      if (x !== -1){
+      const itemInBag = state.findIndex((each) => each.id === action.item.id)
+      if (itemInBag !== -1){
          return (state = state.map(item => {
             if(item.id !== action.item.id) return item;
               return {
@@ -20,21 +20,24 @@ function bag(state=initState.bag, action){
             })
           )
     } else {
-      action.item.counter=1
-       return([
+      action.item.counter = 1
+       return(
+         [
           ...state,
           action.item
-       ])
+        ]
+      )
     }
 
     case 'DELETE_ITEM':
-    return (state = state.map(item => {
-      if(item.id !== action.id) return item;
-      return {
-        ...item,
-        counter : item.counter - 1
-      };
-    }) )
+      return (state = state.map(item => {
+          if(item.id !== action.id) return item;
+          return {
+            ...item,
+            counter : item.counter - 1
+          };
+        })
+      )
     default:
         return state
   }

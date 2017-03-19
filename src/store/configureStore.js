@@ -4,13 +4,14 @@ import {persistStore, autoRehydrate} from 'redux-persist'
 import Reducer from '../reducers'
 
 
-function configureStore(initialState) {
+function configureStore(initialStat) {
     return createStore(
         Reducer,
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-        initialState,
-        compose(applyMiddleware(thunk),
-        autoRehydrate()),
+        compose(
+          applyMiddleware(thunk),
+          autoRehydrate()
+        ),
     )
 }
 

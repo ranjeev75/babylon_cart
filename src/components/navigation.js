@@ -21,9 +21,9 @@ class Navigation extends Component {
   }
 
   render(){
-    const x = this.props.basketCount.map(item => item.counter)
-    //const x1 = x.filter((val)=>val!==undefined)
-    const x2 = x.reduce((prev, curr) => prev + curr, 0)
+    const getCounter = this.props.basketCount.map(item => item.counter)
+    const totalCount = getCounter.reduce((total, item) => total + item, 0)
+    
     return (
       <div>
         <div className='App-header'>
@@ -33,10 +33,9 @@ class Navigation extends Component {
               </div>
               <div className="Column">
                 <div className='Icons'>
-                  <Badge>{x2}</Badge>
                   {this.state.home ?
-                  <Link onClick={()=>this.onClickLink()} to="/basket"><FontAwesome name='shopping-bag' size='2x' style={{color:'white'}}/></Link> :
-                  <Link onClick={()=>this.onClickLink()} to='/'><FontAwesome name='home' size='2x' style={{color:'white'}}/></Link>}
+                  <Link onClick={()=>this.onClickLink()} to="/basket"><Badge>{totalCount}</Badge><FontAwesome name='shopping-bag' size='2x' style={{color:'white'}}/></Link> :
+                  <Link onClick={()=>this.onClickLink()} to='/'><Badge>{totalCount}</Badge><FontAwesome name='home' size='2x' style={{color:'white'}}/></Link>}
                 </div>
               </div>
           </div>

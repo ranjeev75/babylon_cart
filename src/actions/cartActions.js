@@ -15,5 +15,3 @@ export function navigationDestination(bool) {
     type: 'NAVIGATION_DESTINATION', bool
   }
 }
-
-//TODO DO YOU NEED TO ADD INVENTORY INTO THE REDUX STORE?

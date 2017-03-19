@@ -38,7 +38,6 @@ class Home extends Component {
         <Grid>
           <Row>
             {this.state.home.map((item, index) => {
-                //console.log(`PRODUCT ${item.name}`)
                 return (
                   <Cards
                       className='Card'
