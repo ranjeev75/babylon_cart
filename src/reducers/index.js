@@ -30,14 +30,14 @@ function bag(state=initState.bag, action){
     }
 
     case 'DELETE_ITEM':
-      return (state = state.map(item => {
+      state = state.map(item => {
           if(item.id !== action.id) return item;
           return {
             ...item,
-            counter : item.counter - 1
+            counter: item.counter - 1
           };
         })
-      )
+      return state.filter(item => item.counter > 0)
     default:
         return state
   }
