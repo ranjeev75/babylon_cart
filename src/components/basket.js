@@ -24,13 +24,12 @@ class Basket extends Component {
   }
 
   render() {
-    const basketNew = this.props.basket.filter(item => item.counter > 0)
     const cost = totalCost(this.props.basket)
     //console.log(this.props.basket)
     return (
       <div>
         <Table responsive>
-          {basketNew.length > 0 ? <thead>
+          {this.props.basket.length > 0 ? <thead>
             <tr>
               <th>Product</th>
               <th>Quantity</th>
@@ -43,7 +42,7 @@ class Basket extends Component {
           :
           null}
           <tbody>
-          {basketNew.map((item, index) => {
+          {this.props.basket.map((item, index) => {
             return (
               <BasketTable
                 key={item.id}
@@ -57,7 +56,7 @@ class Basket extends Component {
             )
           } : null)
         }
-        {basketNew.length > 0 ?
+        {this.props.basket.length > 0 ?
           <tr>
             <td></td>
             <td></td>
@@ -67,7 +66,7 @@ class Basket extends Component {
             <td><strong>£{cost.toFixed(2)}</strong></td>
           </tr>
         : null}
-        {basketNew.length > 0 ?
+        {this.props.basket.length > 0 ?
           <tr>
             <td></td>
             <td></td>
@@ -77,7 +76,7 @@ class Basket extends Component {
             <td><strong>{withDiscount(cost).discount}%</strong></td>
           </tr>
         : null}
-        {basketNew.length > 0 ?
+        {this.props.basket.length > 0 ?
           <tr>
             <td></td>
             <td></td>
